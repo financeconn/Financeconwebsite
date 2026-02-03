@@ -1,0 +1,342 @@
+<!-- 
+  EXEMPLO DE PÁGINA COMPLETA DE FÓRMULAS
+  Este é um exemplo de como adicionar uma página de fórmulas completa ao index.html
+  Copie este código e cole dentro do <main> no index.html
+-->
+
+<section data-section="economics-formulas" style="display: none;">
+  <div class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back Button -->
+      <button data-navigate="economics" class="text-green-600 hover:underline mb-6 inline-flex items-center gap-2">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Economics
+      </button>
+      
+      <h1 class="text-4xl font-bold text-gray-900 mb-6">Economics Formulas</h1>
+      <p class="text-lg text-gray-600 mb-8">
+        Comprehensive collection of economic formulas with detailed explanations and practical examples.
+      </p>
+
+      <!-- Search/Filter (Optional) -->
+      <div class="mb-8">
+        <input 
+          type="text" 
+          placeholder="Search formulas..." 
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+          onkeyup="filterFormulas(this.value)"
+        >
+      </div>
+
+      <!-- Formula Categories -->
+      <div class="space-y-8">
+        
+        <!-- Category: Microeconomics -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-3xl">📊</span>
+            Microeconomics Formulas
+          </h2>
+          
+          <div class="space-y-6">
+            
+            <!-- Formula 1: Price Elasticity of Demand -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow formula-card">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-semibold text-gray-900">
+                  Price Elasticity of Demand (PED)
+                </h3>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                  Microeconomics
+                </span>
+              </div>
+              
+              <p class="text-gray-600 mb-4">
+                Measures how much the quantity demanded of a good responds to a change in its price.
+              </p>
+              
+              <!-- Formula -->
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                <p class="font-mono text-lg text-center">
+                  PED = (% Change in Quantity Demanded) / (% Change in Price)
+                </p>
+                <p class="font-mono text-lg text-center mt-2">
+                  PED = (ΔQ/Q) / (ΔP/P)
+                </p>
+              </div>
+              
+              <!-- Explanation -->
+              <div class="mb-4">
+                <p class="text-sm text-gray-700 mb-2"><strong>Where:</strong></p>
+                <ul class="space-y-1 ml-4 text-sm text-gray-600">
+                  <li>• <strong>ΔQ</strong> = Change in quantity demanded</li>
+                  <li>• <strong>Q</strong> = Original quantity demanded</li>
+                  <li>• <strong>ΔP</strong> = Change in price</li>
+                  <li>• <strong>P</strong> = Original price</li>
+                </ul>
+              </div>
+              
+              <!-- Interpretation -->
+              <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <p class="text-sm font-semibold text-gray-900 mb-2">Interpretation:</p>
+                <ul class="space-y-1 text-sm text-gray-600">
+                  <li>• <strong>|PED| > 1</strong>: Elastic demand (sensitive to price changes)</li>
+                  <li>• <strong>|PED| = 1</strong>: Unit elastic demand</li>
+                  <li>• <strong>|PED| < 1</strong>: Inelastic demand (less sensitive to price changes)</li>
+                </ul>
+              </div>
+              
+              <!-- Example -->
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm font-semibold text-gray-900 mb-2">📝 Example:</p>
+                <p class="text-sm text-gray-700 mb-2">
+                  If a 10% increase in the price of coffee leads to a 15% decrease in quantity demanded:
+                </p>
+                <p class="text-sm font-mono text-gray-900 mb-2">
+                  PED = -15% / 10% = -1.5
+                </p>
+                <p class="text-sm text-gray-700">
+                  The demand is elastic (|PED| > 1), meaning consumers are relatively sensitive to price changes.
+                </p>
+              </div>
+            </div>
+
+            <!-- Formula 2: Marginal Cost -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow formula-card">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-semibold text-gray-900">
+                  Marginal Cost (MC)
+                </h3>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                  Microeconomics
+                </span>
+              </div>
+              
+              <p class="text-gray-600 mb-4">
+                The additional cost incurred from producing one more unit of a good or service.
+              </p>
+              
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                <p class="font-mono text-lg text-center">
+                  MC = ΔTC / ΔQ
+                </p>
+              </div>
+              
+              <div class="mb-4">
+                <p class="text-sm text-gray-700 mb-2"><strong>Where:</strong></p>
+                <ul class="space-y-1 ml-4 text-sm text-gray-600">
+                  <li>• <strong>ΔTC</strong> = Change in total cost</li>
+                  <li>• <strong>ΔQ</strong> = Change in quantity produced</li>
+                </ul>
+              </div>
+              
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm font-semibold text-gray-900 mb-2">📝 Example:</p>
+                <p class="text-sm text-gray-700 mb-2">
+                  If total cost increases from $1,000 to $1,100 when production increases from 100 to 110 units:
+                </p>
+                <p class="text-sm font-mono text-gray-900 mb-2">
+                  MC = ($1,100 - $1,000) / (110 - 100) = $100 / 10 = $10
+                </p>
+                <p class="text-sm text-gray-700">
+                  The marginal cost of producing each additional unit is $10.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category: Macroeconomics -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-3xl">🌍</span>
+            Macroeconomics Formulas
+          </h2>
+          
+          <div class="space-y-6">
+            
+            <!-- Formula: GDP -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow formula-card">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-semibold text-gray-900">
+                  Gross Domestic Product (GDP)
+                </h3>
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                  Macroeconomics
+                </span>
+              </div>
+              
+              <p class="text-gray-600 mb-4">
+                The total monetary value of all finished goods and services produced within a country's borders in a specific time period.
+              </p>
+              
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                <p class="font-mono text-lg text-center">
+                  GDP = C + I + G + (X - M)
+                </p>
+              </div>
+              
+              <div class="mb-4">
+                <p class="text-sm text-gray-700 mb-2"><strong>Where:</strong></p>
+                <ul class="space-y-1 ml-4 text-sm text-gray-600">
+                  <li>• <strong>C</strong> = Consumption (household spending)</li>
+                  <li>• <strong>I</strong> = Investment (business spending)</li>
+                  <li>• <strong>G</strong> = Government spending</li>
+                  <li>• <strong>X</strong> = Exports</li>
+                  <li>• <strong>M</strong> = Imports</li>
+                  <li>• <strong>(X - M)</strong> = Net exports</li>
+                </ul>
+              </div>
+              
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm font-semibold text-gray-900 mb-2">📝 Example:</p>
+                <p class="text-sm text-gray-700 mb-2">
+                  For a country with:
+                </p>
+                <ul class="text-sm text-gray-700 mb-2 ml-4 space-y-1">
+                  <li>• Consumption: $10 trillion</li>
+                  <li>• Investment: $3 trillion</li>
+                  <li>• Government spending: $4 trillion</li>
+                  <li>• Exports: $2 trillion</li>
+                  <li>• Imports: $2.5 trillion</li>
+                </ul>
+                <p class="text-sm font-mono text-gray-900 mb-2">
+                  GDP = $10T + $3T + $4T + ($2T - $2.5T) = $16.5 trillion
+                </p>
+              </div>
+            </div>
+
+            <!-- Formula: Unemployment Rate -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow formula-card">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-semibold text-gray-900">
+                  Unemployment Rate
+                </h3>
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                  Macroeconomics
+                </span>
+              </div>
+              
+              <p class="text-gray-600 mb-4">
+                The percentage of the labor force that is unemployed and actively seeking employment.
+              </p>
+              
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                <p class="font-mono text-lg text-center">
+                  Unemployment Rate = (Unemployed / Labor Force) × 100%
+                </p>
+              </div>
+              
+              <div class="mb-4">
+                <p class="text-sm text-gray-700 mb-2"><strong>Where:</strong></p>
+                <ul class="space-y-1 ml-4 text-sm text-gray-600">
+                  <li>• <strong>Unemployed</strong> = Number of people actively seeking work</li>
+                  <li>• <strong>Labor Force</strong> = Employed + Unemployed</li>
+                </ul>
+              </div>
+              
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm font-semibold text-gray-900 mb-2">📝 Example:</p>
+                <p class="text-sm text-gray-700 mb-2">
+                  If there are 8 million unemployed people and the labor force is 160 million:
+                </p>
+                <p class="text-sm font-mono text-gray-900 mb-2">
+                  Unemployment Rate = (8M / 160M) × 100% = 5%
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Category: International Economics -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-3xl">🌐</span>
+            International Economics Formulas
+          </h2>
+          
+          <div class="space-y-6">
+            
+            <!-- Formula: Exchange Rate -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow formula-card">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-xl font-semibold text-gray-900">
+                  Exchange Rate Formula
+                </h3>
+                <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+                  International
+                </span>
+              </div>
+              
+              <p class="text-gray-600 mb-4">
+                The rate at which one currency can be exchanged for another.
+              </p>
+              
+              <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                <p class="font-mono text-lg text-center">
+                  Exchange Rate = Currency A / Currency B
+                </p>
+              </div>
+              
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm font-semibold text-gray-900 mb-2">📝 Example:</p>
+                <p class="text-sm text-gray-700 mb-2">
+                  If 1 USD = 5 BRL (Brazilian Real):
+                </p>
+                <p class="text-sm font-mono text-gray-900 mb-2">
+                  Exchange Rate (USD/BRL) = 5
+                </p>
+                <p class="text-sm text-gray-700">
+                  This means you need 5 Brazilian Reais to buy 1 US Dollar.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="mt-12 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 text-center text-white">
+        <h2 class="text-2xl font-bold mb-4">
+          Want to practice these formulas?
+        </h2>
+        <p class="text-lg mb-6 text-green-50">
+          Check out our calculators and interactive tools
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <button data-navigate="calculators" class="px-6 py-3 bg-white text-green-600 rounded-lg hover:bg-green-50 transition-colors">
+            Try Calculators
+          </button>
+          <button data-navigate="economics-resources" class="px-6 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-green-600 transition-colors">
+            View Resources
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Add this script at the end of your HTML body, before closing </body> tag -->
+<script>
+// Formula search/filter function
+function filterFormulas(searchTerm) {
+  const cards = document.querySelectorAll('.formula-card');
+  const term = searchTerm.toLowerCase();
+  
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(term)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>

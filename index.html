@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceCon - Financial Education Platform</title>
+    <meta name="description" content="Your complete platform to learn about finance, economics, and more. We help students and people master essential concepts of the financial world.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="sticky-header">
+        <nav class="nav-container">
+            <div class="nav-inner">
+                <!-- Logo -->
+                <button id="logo-btn" class="logo-container">
+                    <div class="logo-icon">
+                        <span class="logo-text">FC</span>
+                    </div>
+                    <span class="brand-name">FinanceCon</span>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <button data-section="home" class="nav-item active">Home</button>
+                    <button data-section="about" class="nav-item">About</button>
+                    <button data-section="finance" class="nav-item">Finance</button>
+                    <button data-section="economics" class="nav-item">Economics</button>
+                    <button data-section="topics" class="nav-item">Related Topics</button>
+                    <button data-section="resources" class="nav-item">Resources</button>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button id="language-btn" class="language-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="language-menu" class="language-menu hidden">
+                            <button data-lang="en" class="language-option active">🇺🇸 English</button>
+                            <button data-lang="pt" class="language-option">🇧🇷 Português</button>
+                            <button data-lang="es" class="language-option">🇪🇸 Español</button>
+                            <button data-lang="fr" class="language-option">🇫🇷 Français</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="mobile-menu-btn">
+                    <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-nav hidden">
+                <button data-section="home" class="mobile-nav-item active">Home</button>
+                <button data-section="about" class="mobile-nav-item">About</button>
+                <button data-section="finance" class="mobile-nav-item">Finance</button>
+                <button data-section="economics" class="mobile-nav-item">Economics</button>
+                <button data-section="topics" class="mobile-nav-item">Related Topics</button>
+                <button data-section="resources" class="mobile-nav-item">Resources</button>
+                
+                <div class="mobile-language-section">
+                    <p class="mobile-language-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        Language
+                    </p>
+                    <button data-lang="en" class="mobile-language-item active">🇺🇸 English</button>
+                    <button data-lang="pt" class="mobile-language-item">🇧🇷 Português</button>
+                    <button data-lang="es" class="mobile-language-item">🇪🇸 Español</button>
+                    <button data-lang="fr" class="mobile-language-item">🇫🇷 Français</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo-container">
+                        <div class="logo-icon">
+                            <span class="logo-text">FC</span>
+                        </div>
+                        <span class="footer-brand-name">FinanceCon</span>
+                    </div>
+                    <p class="footer-tagline" data-i18n="footer.tagline">
+                        Democratizing knowledge about finance, economics and related topics.
+                    </p>
+                    <div class="footer-made">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="heart-icon">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span data-i18n="footer.made">Made with dedication for students</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h3 class="footer-heading" data-i18n="footer.navigation">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-section="home" data-i18n="nav.home">Home</a></li>
+                        <li><a href="#" data-section="about" data-i18n="nav.about">About</a></li>
+                        <li><a href="#" data-section="finance" data-i18n="nav.finance">Finance</a></li>
+                        <li><a href="#" data-section="economics" data-i18n="nav.economics">Economics</a></li>
+                        <li><a href="#" data-section="topics" data-i18n="nav.topics">Related Topics</a></li>
+                        <li><a href="#" data-section="resources" data-i18n="nav.resources">Resources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="footer-heading" data-i18n="footer.contact">Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:financeconn@gmail.com">financeconn@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <a href="#">www.financecon.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> FinanceCon. <span data-i18n="footer.rights">All rights reserved.</span></p>
+                <p class="footer-mission" data-i18n="footer.mission">Accessible financial education for everyone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Analytics Modal -->
+    <div id="analytics-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Analytics Dashboard</h2>
+                <button id="close-analytics" class="modal-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div id="analytics-content" class="modal-body">
+                <!-- Analytics content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

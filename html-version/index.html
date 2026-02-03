@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinanceCon - Financial Education Platform</title>
+  <meta name="description" content="Your complete platform to learn about finance, economics, and more. We help students and people master essential concepts of the financial world.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen bg-white">
+  
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between" style="height: 4rem;">
+        <!-- Logo -->
+        <button onclick="navigateToSection('home')" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold">FC</span>
+          </div>
+          <span class="text-xl font-semibold text-gray-900">FinanceCon</span>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-1">
+          <button data-nav="home" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.home">Home</span>
+          </button>
+          <button data-nav="about" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.about">About</span>
+          </button>
+          <button data-nav="finance" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.finance">Finance</span>
+          </button>
+          <button data-nav="economics" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.economics">Economics</span>
+          </button>
+          <button data-nav="topics" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.topics">Related Topics</span>
+          </button>
+          <button data-nav="resources" class="px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            <span data-i18n="nav.resources">Resources</span>
+          </button>
+          
+          <!-- Language Selector -->
+          <div class="relative ml-2">
+            <button id="language-button" onclick="toggleLanguageMenu()" class="p-2 rounded-lg hover:bg-gray-100 flex items-center gap-2">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+              </svg>
+            </button>
+            
+            <div id="language-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 hidden">
+              <button data-lang="en" onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2 text-gray-700">
+                <span>🇺🇸</span>
+                <span>English</span>
+              </button>
+              <button data-lang="pt" onclick="changeLanguage('pt')" class="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2 text-gray-700">
+                <span>🇧🇷</span>
+                <span>Português</span>
+              </button>
+              <button data-lang="es" onclick="changeLanguage('es')" class="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2 text-gray-700">
+                <span>🇪🇸</span>
+                <span>Español</span>
+              </button>
+              <button data-lang="fr" onclick="changeLanguage('fr')" class="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2 text-gray-700">
+                <span>🇫🇷</span>
+                <span>Français</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+          <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden py-4 border-t border-gray-200 hidden">
+        <button data-nav="home" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.home">Home</span>
+        </button>
+        <button data-nav="about" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.about">About</span>
+        </button>
+        <button data-nav="finance" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.finance">Finance</span>
+        </button>
+        <button data-nav="economics" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.economics">Economics</span>
+        </button>
+        <button data-nav="topics" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.topics">Related Topics</span>
+        </button>
+        <button data-nav="resources" class="block w-full text-left px-4 py-3 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+          <span data-i18n="nav.resources">Resources</span>
+        </button>
+        
+        <!-- Mobile Language Selector -->
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="px-4 py-2 text-sm text-gray-500 flex items-center gap-2">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+            </svg>
+            Language
+          </p>
+          <button data-lang="en" onclick="changeLanguage('en')" class="block w-full text-left px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            🇺🇸 English
+          </button>
+          <button data-lang="pt" onclick="changeLanguage('pt')" class="block w-full text-left px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            🇧🇷 Português
+          </button>
+          <button data-lang="es" onclick="changeLanguage('es')" class="block w-full text-left px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            🇪🇸 Español
+          </button>
+          <button data-lang="fr" onclick="changeLanguage('fr')" class="block w-full text-left px-4 py-2 rounded-lg transition-colors text-gray-700 hover:bg-gray-50">
+            🇫🇷 Français
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    
+    <!-- Home / Hero Section -->
+    <section data-section="home" style="display: none;">
+      <div class="relative">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-br from-green-50 to-white py-20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+              <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                <span data-i18n="hero.title">Welcome to</span> <span class="text-green-600">FinanceCon</span>
+              </h1>
+              <p class="text-xl text-gray-600 mb-8" data-i18n="hero.subtitle">
+                Your complete platform to learn about finance, economics, and more. We help students and people master essential concepts of the financial world.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button data-navigate="about" class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
+                  <span data-i18n="hero.cta.about">Learn About Us</span>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                  </svg>
+                </button>
+                <button data-navigate="resources" class="px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors">
+                  <span data-i18n="hero.cta.resources">View Resources</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-16 bg-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <button data-navigate="finance" class="text-center p-6 rounded-xl hover:bg-green-50 transition-colors cursor-pointer">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2" data-i18n="features.finance.title">Finance</h3>
+                <p class="text-gray-600" data-i18n="features.finance.desc">
+                  Learn about financial management, investments, planning and much more
+                </p>
+              </button>
+
+              <button data-navigate="economics" class="text-center p-6 rounded-xl hover:bg-green-50 transition-colors cursor-pointer">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2" data-i18n="features.economics.title">Economics</h3>
+                <p class="text-gray-600" data-i18n="features.economics.desc">
+                  Understand the economic principles that move the market and society
+                </p>
+              </button>
+
+              <button data-navigate="topics" class="text-center p-6 rounded-xl hover:bg-green-50 transition-colors cursor-pointer">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2" data-i18n="features.topics.title">Related Topics</h3>
+                <p class="text-gray-600" data-i18n="features.topics.desc">
+                  Master fundamental concepts in accounting, business, mathematics and more
+                </p>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-green-600 text-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="cta.ready">
+              Ready to expand your financial knowledge?
+            </h2>
+            <p class="text-xl mb-8 text-green-50" data-i18n="cta.explore">
+              Explore our educational materials and free resources
+            </p>
+            <button data-navigate="resources" class="px-8 py-3 bg-white text-green-600 rounded-lg hover:bg-green-50 transition-colors inline-flex items-center gap-2">
+              <span data-i18n="cta.access">Access Resources</span>
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section data-section="about" style="display: none;">
+      <div class="bg-white">
+        <!-- Hero Section -->
+        <section class="py-16 bg-gradient-to-br from-green-50 to-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                About FinanceCon
+              </h1>
+              <p class="text-xl text-gray-600">
+                An initiative dedicated to democratizing financial and economic knowledge
+                for students and people of all ages.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+              <p class="text-lg text-gray-600 mb-4">
+                FinanceCon was born from the need to make financial education accessible
+                and understandable for everyone. We believe that knowledge about finance,
+                economics, and related topics is fundamental for personal and professional
+                development.
+              </p>
+              <p class="text-lg text-gray-600 mb-4">
+                Our platform offers didactic content, practical resources, and educational
+                materials to help you make more conscious financial decisions and build a
+                prosperous future.
+              </p>
+              <p class="text-lg text-gray-600">
+                Whether you're a beginner student or someone looking to deepen your
+                knowledge, FinanceCon is your ally in the learning journey.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="py-16 bg-gray-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+              Our Values
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Accessibility</h3>
+                <p class="text-gray-600">
+                  Financial knowledge should be accessible to everyone, without barriers
+                </p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Clarity</h3>
+                <p class="text-gray-600">
+                  We explain complex concepts in a simple and objective way
+                </p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Commitment</h3>
+                <p class="text-gray-600">
+                  Dedicated to offering quality and always updated content
+                </p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Community</h3>
+                <p class="text-gray-600">
+                  We build together a collaborative learning space
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- What We Offer -->
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+              What We Offer
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="border border-gray-200 p-8 rounded-xl hover:border-green-500 transition-colors">
+                <div class="text-4xl mb-4">📚</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                  Educational Content
+                </h3>
+                <p class="text-gray-600">
+                  Articles, guides and tutorials about finance, economics and related topics
+                </p>
+              </div>
+
+              <div class="border border-gray-200 p-8 rounded-xl hover:border-green-500 transition-colors">
+                <div class="text-4xl mb-4">🎯</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                  Practical Resources
+                </h3>
+                <p class="text-gray-600">
+                  Tools, calculators and spreadsheets to apply knowledge
+                </p>
+              </div>
+
+              <div class="border border-gray-200 p-8 rounded-xl hover:border-green-500 transition-colors">
+                <div class="text-4xl mb-4">💡</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                  Free Materials
+                </h3>
+                <p class="text-gray-600">
+                  E-books, infographics and study materials for download
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Finance Section -->
+    <section data-section="finance" style="display: none;">
+      <div class="bg-white">
+        <!-- Hero Section -->
+        <section class="py-16 bg-gradient-to-br from-green-50 to-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Finance
+              </h1>
+              <p class="text-xl text-gray-600 mb-6">
+                Master fundamental finance concepts and learn to manage your money
+                efficiently. From basics to advanced investment strategies.
+              </p>
+              <div class="flex gap-4 justify-center mb-6" style="flex-wrap: wrap;">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-2xl font-bold text-green-600">50+</div>
+                  <div class="text-sm text-gray-600">Topics</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-2xl font-bold text-green-600">100+</div>
+                  <div class="text-sm text-gray-600">Resources</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-2xl font-bold text-green-600">Free</div>
+                  <div class="text-sm text-gray-600">Access</div>
+                </div>
+              </div>
+              <button data-navigate="finance-formulas" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors inline-flex items-center gap-2">
+                📖 View All Finance Formulas
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Topics Grid -->
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+              Study Topics
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Personal Finance -->
+              <button data-navigate="finance-personal" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600 group-hover:text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                  Personal Finance Management
+                </h3>
+                <p class="text-gray-600 mb-4">Learn to organize your finances, create budgets and control spending</p>
+                <ul class="space-y-2 mb-4">
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Family budget planning
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Expense control
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Emergency fund creation
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Debt management
+                  </li>
+                </ul>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">
+                  Learn more →
+                </div>
+              </button>
+
+              <!-- Investments -->
+              <button data-navigate="finance-investments" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600 group-hover:text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                  Investments
+                </h3>
+                <p class="text-gray-600 mb-4">Discover how to make your money work for you</p>
+                <ul class="space-y-2 mb-4">
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Fixed and variable income
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Investment funds
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Stocks and capital markets
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Portfolio diversification
+                  </li>
+                </ul>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">
+                  Learn more →
+                </div>
+              </button>
+
+              <!-- Financial Analysis -->
+              <button data-navigate="finance-analysis" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-green-600 group-hover:text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                  Financial Analysis
+                </h3>
+                <p class="text-gray-600 mb-4">Understand indicators and analysis for informed decisions</p>
+                <ul class="space-y-2 mb-4">
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Balance sheet analysis
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Financial indicators
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    Cash flow
+                  </li>
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-green-600 mt-1">•</span>
+                    ROI and profitability
+                  </li>
+                </ul>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">
+                  Learn more →
+                </div>
+              </button>
+
+              <!-- More topics can be added similarly -->
+              <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl text-center">
+                <p class="text-gray-600 mb-4">More finance topics coming soon...</p>
+                <button data-navigate="finance-resources" class="text-green-600 hover:underline">View Resources</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Economics Section -->
+    <section data-section="economics" style="display: none;">
+      <div class="bg-white">
+        <section class="py-16 bg-gradient-to-br from-green-50 to-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Economics
+              </h1>
+              <p class="text-xl text-gray-600 mb-6">
+                Understand how economies work, from microeconomic principles to global macroeconomic trends.
+              </p>
+              <button data-navigate="economics-formulas" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors inline-flex items-center gap-2">
+                📖 View All Economics Formulas
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+              Economics Topics
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <button data-navigate="economics-micro" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Microeconomics</h3>
+                <p class="text-gray-600">Individual behavior and market structures</p>
+              </button>
+              <button data-navigate="economics-macro" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Macroeconomics</h3>
+                <p class="text-gray-600">Economy-wide phenomena and policies</p>
+              </button>
+              <button data-navigate="economics-international" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">International Economics</h3>
+                <p class="text-gray-600">Trade and global economic relations</p>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Related Topics Section -->
+    <section data-section="topics" style="display: none;">
+      <div class="bg-white">
+        <section class="py-16 bg-gradient-to-br from-green-50 to-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Related Topics
+              </h1>
+              <p class="text-xl text-gray-600">
+                Explore accounting, business, mathematics, and statistics concepts that complement your financial education.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <button data-navigate="accounting-formulas" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Accounting</h3>
+                <p class="text-gray-600 mb-4">Financial statements and accounting principles</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View Formulas →</div>
+              </button>
+
+              <button data-navigate="business-formulas" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">💼</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Business</h3>
+                <p class="text-gray-600 mb-4">Business strategy and management concepts</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View Formulas →</div>
+              </button>
+
+              <button data-navigate="mathematics-formulas" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">🔢</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Mathematics</h3>
+                <p class="text-gray-600 mb-4">Essential mathematical concepts for finance</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View Formulas →</div>
+              </button>
+
+              <button data-navigate="statistics-formulas" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">📈</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Statistics</h3>
+                <p class="text-gray-600 mb-4">Statistical analysis and data interpretation</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View Formulas →</div>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section data-section="resources" style="display: none;">
+      <div class="bg-white">
+        <section class="py-16 bg-gradient-to-br from-green-50 to-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Resources
+              </h1>
+              <p class="text-xl text-gray-600">
+                Access our collection of educational resources, calculators, templates, and learning materials.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+              Browse Resources by Category
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <button data-navigate="finance-resources" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">💰</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Finance Resources</h3>
+                <p class="text-gray-600 mb-4">Financial planning tools and guides</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View All →</div>
+              </button>
+
+              <button data-navigate="economics-resources" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">🌍</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Economics Resources</h3>
+                <p class="text-gray-600 mb-4">Economic analysis and research materials</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View All →</div>
+              </button>
+
+              <button data-navigate="templates-resources" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">📄</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Templates</h3>
+                <p class="text-gray-600 mb-4">Ready-to-use spreadsheets and documents</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View All →</div>
+              </button>
+
+              <button data-navigate="calculators" class="bg-white border border-gray-200 p-6 rounded-xl hover:border-green-500 hover:shadow-lg transition-all text-left group cursor-pointer">
+                <div class="text-4xl mb-4">🧮</div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-green-600">Calculators</h3>
+                <p class="text-gray-600 mb-4">Financial calculators and tools</p>
+                <div class="text-green-600 font-medium text-sm group-hover:underline">View All →</div>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Placeholder sections for other pages -->
+    <section data-section="finance-formulas" style="display: none;">
+      <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <button data-navigate="finance" class="text-green-600 hover:underline mb-6 inline-flex items-center gap-2">
+            ← Back to Finance
+          </button>
+          <h1 class="text-4xl font-bold text-gray-900 mb-6">Finance Formulas</h1>
+          <p class="text-lg text-gray-600 mb-8">Comprehensive collection of financial formulas with explanations.</p>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <p class="text-gray-600">Formula content would be displayed here...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add more placeholder sections as needed for all the pages -->
+    
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold">FC</span>
+            </div>
+            <span class="text-xl font-semibold">FinanceCon</span>
+          </div>
+          <p class="text-gray-400 mb-4" data-i18n="footer.tagline">
+            Democratizing knowledge about finance, economics and related topics.
+          </p>
+          <div class="flex items-center gap-2 text-gray-400">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" class="text-red-500">
+              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span class="text-sm" data-i18n="footer.made">Made with dedication for students</span>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-i18n="footer.navigation">Navigation</h3>
+          <ul class="space-y-2">
+            <li><button data-navigate="home" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.home">Home</button></li>
+            <li><button data-navigate="about" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.about">About</button></li>
+            <li><button data-navigate="finance" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.finance">Finance</button></li>
+            <li><button data-navigate="economics" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.economics">Economics</button></li>
+            <li><button data-navigate="topics" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.topics">Related Topics</button></li>
+            <li><button data-navigate="resources" class="text-gray-400 hover:text-green-400 transition-colors" data-i18n="nav.resources">Resources</button></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-i18n="footer.contact">Contact</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <a href="mailto:financeconn@gmail.com" class="hover:text-green-400 transition-colors">
+                financeconn@gmail.com
+              </a>
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <a href="#" class="hover:text-green-400 transition-colors">
+                www.financecon.com
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+        <p>© <span id="current-year">2026</span> FinanceCon. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        <p class="mt-2" data-i18n="footer.mission">
+          Accessible financial education for everyone.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
